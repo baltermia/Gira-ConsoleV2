@@ -6,14 +6,14 @@ import java.nio.file.Paths;
 /**
  * Mit der Logger Klasse kann man Loggen.
  */
-public class logger {
+public class Logger {
     private String filePath;
 
     /**
      * Constructor
      * @param filePath
      */
-    public logger (String filePath) {
+    public Logger(String filePath) {
         this.filePath = filePath;
     }
 

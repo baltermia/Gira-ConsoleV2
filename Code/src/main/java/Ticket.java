@@ -4,16 +4,16 @@ import java.util.List;
 /**
  * Die ticket Klasse beinhaltet Tickets.
  */
-public class ticket {
-    public List<ticket> ticketList = new ArrayList<ticket>();
+public class Ticket {
+    public List<Ticket> ticketList = new ArrayList<Ticket>();
 
     public int id;
     public String name;
     public String description;
     public String priority;
     public boolean isSolved;
-    public employee editor;
-    public employee reporter;
+    public Employee editor;
+    public Employee reporter;
 
     /**
      * Constructor.
@@ -23,7 +23,7 @@ public class ticket {
      * @param reporter
      * @param editor
      */
-    public ticket(String name, String description, String priority, employee reporter, employee editor) {
+    public Ticket(String name, String description, String priority, Employee reporter, Employee editor) {
         id = ticketList.size();
         this.name = name;
         this.description = description;
@@ -33,7 +33,7 @@ public class ticket {
         this.editor = editor;
 
         if (!priority.equals("-")) {
-            gira.girObj.proObj.startupTicket.ticketList.add(this);
+            Gira.girObj.proObj.startupTicket.ticketList.add(this);
         }
     }
 
@@ -42,7 +42,7 @@ public class ticket {
      * @param id_name
      * @return
      */
-    public ticket getTicket(String id_name) {
+    public Ticket getTicket(String id_name) {
         if (id_name.matches("[0-9]+")) {
             for (int i = 0; i < ticketList.size(); i++) {
                 if (Integer.toString(ticketList.get(i).id).equals(id_name))

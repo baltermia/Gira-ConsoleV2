@@ -1,10 +1,10 @@
-public class gira {
-    public program proObj = new program();
-    public static gira girObj;
+public class Gira {
+    public Program proObj = new Program();
+    public static Gira girObj;
 
     static {
         try {
-            girObj = new gira();
+            girObj = new Gira();
         } catch (Exception ex) { }
     }
 

@@ -4,8 +4,8 @@ import java.util.List;
 /**
  * Die Admin Klasse beinhaltet die Admin Konten. Mit Ihr kann man zudem Konten erstellen/Löscen
  */
-public class admin {
-    public List<admin> adminList = new ArrayList<>();
+public class Admin {
+    public List<Admin> adminList = new ArrayList<>();
 
     public int id;
     public String username;
@@ -16,13 +16,13 @@ public class admin {
      * @param username
      * @param password
      */
-    public admin(String username, String password) {
+    public Admin(String username, String password) {
         id = adminList.size();
         this.username = username;
         this.password = password;
 
         if (!username.equals("admin")) {
-            gira.girObj.proObj.rootAdmin.adminList.add(this);
+            Gira.girObj.proObj.rootAdmin.adminList.add(this);
         } else {
             this.adminList.add(this);
         }
@@ -33,9 +33,9 @@ public class admin {
      * @param name
      * @return
      */
-    public employee createEmployeeAccount(String name) {
+    public Employee createEmployeeAccount(String name) {
 
-        return new employee(getNewUsername(name, false));
+        return new Employee(getNewUsername(name, false));
     }
 
     /**
@@ -44,8 +44,8 @@ public class admin {
      * @param password
      * @return
      */
-    public admin createAdminAccount(String name, String password) {
-        return new admin (getNewUsername(name, true), password);
+    public Admin createAdminAccount(String name, String password) {
+        return new Admin(getNewUsername(name, true), password);
     }
 
     /**
@@ -53,11 +53,11 @@ public class admin {
      * @param acc
      * @return
      */
-    public boolean deleteEmployeeAccount(employee acc) {
-        for (int i = 0; i < gira.girObj.proObj.employeeAccount.employeeList.size(); i++) {
-            if (gira.girObj.proObj.employeeAccount.employeeList.get(i).equals(acc))
+    public boolean deleteEmployeeAccount(Employee acc) {
+        for (int i = 0; i < Gira.girObj.proObj.employeeAccount.employeeList.size(); i++) {
+            if (Gira.girObj.proObj.employeeAccount.employeeList.get(i).equals(acc))
             {
-                gira.girObj.proObj.employeeAccount.employeeList.remove(i);
+                Gira.girObj.proObj.employeeAccount.employeeList.remove(i);
                 return true;
             }
         }
@@ -69,11 +69,11 @@ public class admin {
      * @param acc
      * @return
      */
-    public boolean deleteAdminAccount(admin acc) {
-        for (int i = 0; i < gira.girObj.proObj.employeeAccount.employeeList.size(); i++) {
-            if (gira.girObj.proObj.adminAccount.adminList.get(i).equals(acc))
+    public boolean deleteAdminAccount(Admin acc) {
+        for (int i = 0; i < Gira.girObj.proObj.employeeAccount.employeeList.size(); i++) {
+            if (Gira.girObj.proObj.adminAccount.adminList.get(i).equals(acc))
             {
-                gira.girObj.proObj.adminAccount.adminList.remove(i);
+                Gira.girObj.proObj.adminAccount.adminList.remove(i);
                 return true;
             }
         }
@@ -89,7 +89,7 @@ public class admin {
         String username = (name.substring(0, 3) + name.split(" ")[1].substring(0, 3)).toLowerCase();
 
         while (true) {
-            if ((isAdmin == false ? gira.girObj.proObj.mainEmployee.getEmployee(username) : getAdmin(username)) != null) {
+            if ((isAdmin == false ? Gira.girObj.proObj.mainEmployee.getEmployee(username) : getAdmin(username)) != null) {
                 if (username.length() > 6) {
                     int strLenth = username.length();
                     while (strLenth > 0 && Character.isDigit(username.charAt(strLenth - 1))) {
@@ -114,7 +114,7 @@ public class admin {
      * @param id_username
      * @return
      */
-    public admin getAdmin(String id_username) {
+    public Admin getAdmin(String id_username) {
         if (id_username.matches("[0-9]+")) {
             for (int i = 0; i < adminList.size(); i++) {
                 if (Integer.toString(adminList.get(i).id).equals(id_username))
