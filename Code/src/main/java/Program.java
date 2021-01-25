@@ -11,12 +11,16 @@ public class Program {
     public Ticket startupTicket = new Ticket("GiraV2", "Wilkommen bei GiraV2", "-", mainEmployee, mainEmployee);
     public Logger logger = new Logger(new Logger("").getFilePath());
 
+    public Program() {
+        Run();
+    }
+
     /**
      * Ersetzt die Main Methode von gira, da sonsts statisch
      */
-    public void run() {
+    private void Run() {
         try {
-            GiraV2.girObj.proObj.logger.log("Programm gestartet.");
+            GiraV2.proObj.logger.log("Programm gestartet.");
 
             Navigation nav = new Navigation();
             boolean endProgram = false;
@@ -80,13 +84,13 @@ public class Program {
                     }
                 }
             }
-            GiraV2.girObj.proObj.logger.log("Programm wurde beendet");
+            GiraV2.proObj.logger.log("Programm wurde beendet");
             System.out.println("Programm wurde beendet. Danke dass Sie Gira nutzen.");
         }
         catch(Exception ex)  {
             System.out.println("Es gab einen unbekannten Fehler. Program wird beendet.");
             try {
-                GiraV2.girObj.proObj.logger.log(ex.getMessage());
+                GiraV2.proObj.logger.log(ex.getMessage());
             }
             catch (Exception e) {
                 System.out.println("Fehlermeldung Konnte nicht in die Log-Datei geschrieben werden. Ausgabe in der Konsole:\n" + e.getMessage());

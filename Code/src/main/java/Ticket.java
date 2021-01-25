@@ -33,7 +33,7 @@ public class Ticket {
         this.editor = editor;
 
         if (!priority.equals("-")) {
-            GiraV2.girObj.proObj.startupTicket.ticketList.add(this);
+            GiraV2.proObj.startupTicket.ticketList.add(this);
         }
     }
 
