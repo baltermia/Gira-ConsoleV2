@@ -31,8 +31,15 @@ public class File {
         return true;
     }
 
-    public String getJsonValue(String key) {
-        JSONObject obj = new JSONObject(configContent);
-        return "";
+    public static String getFromConfig(String configPath, String key) throws ConfigNotFoundException {
+        if (!Files.exists(Path.of(configPath))) {
+            throw new ConfigNotFoundException(configPath);
+        }
+        try {
+            return new JSONObject(Files.readString(Paths.get(configPath))).getString("logFilePath");
+        }
+        catch (Exception ex) {
+            return null;
+        }
     }
 }

@@ -1,7 +1,12 @@
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
+
 import java.nio.file.Paths;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 
 /**
  * Mit der Logger Klasse kann man Loggen.
@@ -22,24 +27,10 @@ public class Logger {
      * @param text
      * @throws IOException
      */
-    public void log (String text) throws IOException {
-        text = Files.readString(Paths.get(filePath))  + "\n" + text;
-                Files.write(Paths.get(filePath), text.getBytes());
-    }
-
-    /**
-     * Holt den Pfad der Log-Datei aus der Config.
-     * @return
-     */
-    public String getFilePath() {
+    public void log (String text) {
         try {
-            if (!Files.exists(Path.of(filePath))) {
-                throw new ConfigNotFoundException(filePath);
-            }
-            return Files.readString(Paths.get("config.txt"));
+            Files.write(Paths.get(filePath), (Files.readString(Paths.get(filePath))  + "\n" + DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(LocalDate.now()) + text).getBytes());
         }
-        catch (Exception ex) {
-            return null;
-        }
+        catch (IOException ex) { }
     }
 }

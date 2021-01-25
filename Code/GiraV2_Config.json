@@ -1,5 +1,5 @@
 {
-	"logFilePath": "",
-	"ticketFilePath": "",
-	"userFilePath": ""
+	"logFilePath": "GiraV2_Log.log",
+	"ticketFilePath": "GiraV2_Tickets.json",
+	"userFilePath": "GiraV2_Users.json"
 }

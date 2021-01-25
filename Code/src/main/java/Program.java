@@ -1,3 +1,5 @@
+import java.util.logging.ConsoleHandler;
+
 /**
  * Ersetzt GiraV2.java, da sonst statisch.
  */
@@ -9,10 +11,19 @@ public class Program {
     public Admin rootAdmin = new Admin("admin", "root");
     public Employee mainEmployee = new Employee("standardUser", "1234");
     public Ticket startupTicket = new Ticket("GiraV2", "Wilkommen bei GiraV2", "-", mainEmployee, mainEmployee);
-    public Logger logger = new Logger(new Logger("").getFilePath());
+    public Logger logger;
 
     public Program() {
+        try {
+            logger = new Logger(File.getFromConfig("GiraV2_Config.json", "logFilePath"));
+        }
+        catch (ConfigNotFoundException ex) {
+            System.out.println("Die Config Datei wurde nicht gefunden. Bitte überprüfen Sie die Datei. Programm kann nicht starten.");
+            return;
+        }
+        logger.log("Program Started");
         Run();
+        logger.log("Program Ended");
     }
 
     /**

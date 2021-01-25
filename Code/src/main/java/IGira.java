@@ -1,3 +1,3 @@
 public interface IGira {
-    public IGira get(String id_name);
+    public abstract IGira get(String id_name);
 }
