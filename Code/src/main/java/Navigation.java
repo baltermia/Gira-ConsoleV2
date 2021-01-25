@@ -50,7 +50,7 @@ public class Navigation {
         while (true) {
             String input = reader.readLine();
 
-            Employee account = GiraV2.proObj.mainEmployee.getEmployee(input);
+            Employee account = GiraV2.proObj.mainEmployee.get(input);
 
             if (account == null) {
                 System.out.println("Ihr Account wurde nicht gefunden. Probieren Sie es nochmals: ");
@@ -72,7 +72,7 @@ public class Navigation {
         while (true) {
             String input = reader.readLine();
 
-            Admin account = GiraV2.proObj.rootAdmin.getAdmin(input);
+            Admin account = GiraV2.proObj.rootAdmin.get(input);
 
             if (account == null) {
                 System.out.println("Ihr Account wurde nicht gefunden. Probieren Sie es nochmals: ");
@@ -169,7 +169,7 @@ public class Navigation {
             String input = reader.readLine();
 
             if (isAdmin) {
-                Admin acc = GiraV2.proObj.rootAdmin.getAdmin(input);
+                Admin acc = GiraV2.proObj.rootAdmin.get(input);
                 if (acc == null) {
                     System.out.println("Der eingegebene Account wurde nicht gefunen. Bitte probieren Sie es nochmals:");
                     continue;
@@ -182,9 +182,9 @@ public class Navigation {
                 }
                 return;
             } else {
-                Employee acc = GiraV2.proObj.mainEmployee.getEmployee(input);
+                Employee acc = GiraV2.proObj.mainEmployee.get(input);
 
-                if (GiraV2.proObj.mainEmployee.getEmployee(input) == null) {
+                if (GiraV2.proObj.mainEmployee.get(input) == null) {
                     System.out.println("Der eingegebene Account wurde nicht gefunen. Bitte probieren Sie es nochmals:");
                     continue;
                 }
@@ -230,12 +230,12 @@ public class Navigation {
         Employee editor;
         while (true) {
             String user = reader.readLine();
-            if (GiraV2.proObj.mainEmployee.getEmployee(user) == null) {
+            if (GiraV2.proObj.mainEmployee.get(user) == null) {
                 System.out.println("Es wurde kein Nutzer mit den Angaben gefunden. Bitte probieren Sie es nochals:");
                 continue;
             }
             else {
-                editor = GiraV2.proObj.mainEmployee.getEmployee(user);
+                editor = GiraV2.proObj.mainEmployee.get(user);
             }
             break;
         }
@@ -252,11 +252,11 @@ public class Navigation {
         Ticket tckt;
         while (true) {
             String id_name = reader.readLine();
-            if (GiraV2.proObj.startupTicket.getTicket(id_name) == null) {
+            if (GiraV2.proObj.startupTicket.get(id_name) == null) {
                 System.out.println("Ticket wurde nicht gefunden. Bitte probieren Sie es nochmals:");
                 continue;
             } else {
-                tckt = GiraV2.proObj.startupTicket.getTicket(id_name);
+                tckt = GiraV2.proObj.startupTicket.get(id_name);
                 break;
             }
         }
@@ -307,12 +307,12 @@ public class Navigation {
                 Employee reporter;
                 while (true) {
                     String user = reader.readLine();
-                    if (GiraV2.proObj.mainEmployee.getEmployee(user) == null) {
+                    if (GiraV2.proObj.mainEmployee.get(user) == null) {
                         System.out.println("Es wurde kein Nutzer mit den Angaben gefunden. Bitte probieren Sie es nochals:");
                         continue;
                     }
                     else {
-                        reporter = GiraV2.proObj.mainEmployee.getEmployee(user);
+                        reporter = GiraV2.proObj.mainEmployee.get(user);
                     }
                     break;
                 }
@@ -323,12 +323,12 @@ public class Navigation {
                 Employee editor;
                 while (true) {
                     String user = reader.readLine();
-                    if (GiraV2.proObj.mainEmployee.getEmployee(user) == null) {
+                    if (GiraV2.proObj.mainEmployee.get(user) == null) {
                         System.out.println("Es wurde kein Nutzer mit den Angaben gefunden. Bitte probieren Sie es nochals:");
                         continue;
                     }
                     else {
-                        editor = GiraV2.proObj.mainEmployee.getEmployee(user);
+                        editor = GiraV2.proObj.mainEmployee.get(user);
                     }
                     break;
                 }

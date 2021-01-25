@@ -4,12 +4,8 @@ import java.util.List;
 /**
  * Die Admin Klasse beinhaltet die Admin Konten. Mit Ihr kann man zudem Konten erstellen/Löscen
  */
-public class Admin {
+public class Admin extends User{
     public List<Admin> adminList = new ArrayList<>();
-
-    public int id;
-    public String username;
-    public String password;
 
     /**
      * Constructor
@@ -89,7 +85,7 @@ public class Admin {
         String username = (name.substring(0, 3) + name.split(" ")[1].substring(0, 3)).toLowerCase();
 
         while (true) {
-            if ((isAdmin == false ? GiraV2.proObj.mainEmployee.getEmployee(username) : getAdmin(username)) != null) {
+            if ((isAdmin == false ? GiraV2.proObj.mainEmployee.get(username) : get(username)) != null) {
                 if (username.length() > 6) {
                     int strLenth = username.length();
                     while (strLenth > 0 && Character.isDigit(username.charAt(strLenth - 1))) {
@@ -114,7 +110,7 @@ public class Admin {
      * @param id_username
      * @return
      */
-    public Admin getAdmin(String id_username) {
+    public Admin get(String id_username) {
         if (id_username.matches("[0-9]+")) {
             for (int i = 0; i < adminList.size(); i++) {
                 if (Integer.toString(adminList.get(i).id).equals(id_username))

@@ -4,11 +4,8 @@ import java.util.List;
 /**
  * Die employee Klasse beinhaltet die Employees
  */
-public class Employee {
+public class Employee extends User{
     public List<Employee> employeeList = new ArrayList<>();
-
-    public int id;
-    public String username;
 
     /**
      * Constructor
@@ -28,7 +25,7 @@ public class Employee {
      * @param id_username
      * @return
      */
-    public Employee getEmployee(String id_username) {
+    public Employee get(String id_username) {
         if (id_username.matches("[0-9]+")) {
             for (int i = 0; i < employeeList.size(); i++) {
                 if (Integer.toString(employeeList.get(i).id).equals(id_username))

@@ -4,7 +4,7 @@ import java.util.List;
 /**
  * Die ticket Klasse beinhaltet Tickets.
  */
-public class Ticket {
+public class Ticket implements IGira{
     public List<Ticket> ticketList = new ArrayList<Ticket>();
 
     public int id;
@@ -42,7 +42,7 @@ public class Ticket {
      * @param id_name
      * @return
      */
-    public Ticket getTicket(String id_name) {
+    public Ticket get(String id_name) {
         if (id_name.matches("[0-9]+")) {
             for (int i = 0; i < ticketList.size(); i++) {
                 if (Integer.toString(ticketList.get(i).id).equals(id_name))
