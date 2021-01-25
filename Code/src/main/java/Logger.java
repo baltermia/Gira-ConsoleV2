@@ -1,11 +1,11 @@
-import org.json.JSONObject;
-
 import java.io.IOException;
 import java.nio.file.Files;
 
 import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import java.util.Locale;
 
 
 /**
@@ -25,11 +25,29 @@ public class Logger {
     /**
      * Schreibt den mitgegebenen Text
      * @param text
-     * @throws IOException
      */
-    public void log (String text) {
+    public void log (String text, String type) {
         try {
-            Files.write(Paths.get(filePath), (Files.readString(Paths.get(filePath))  + "\n" + DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").format(LocalDate.now()) + text).getBytes());
+            String info;
+            switch (type.toLowerCase()) {
+                case "fatal":
+                    info = "Fatal";
+                    break;
+                case "error":
+                    info = "Error";
+                    break;
+                case "info":
+                    info = "Info";
+                    break;
+                default:
+                    info = "Unspecified";
+                    break;
+            }
+
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String dateTime = formatter.format(new Date());
+            String nText = (Files.readString(Paths.get(filePath))  + "\n" + dateTime + "\t;\t" + info + "\t;\t" + text);
+            Files.write(Paths.get(filePath), nText.getBytes());
         }
         catch (IOException ex) { }
     }

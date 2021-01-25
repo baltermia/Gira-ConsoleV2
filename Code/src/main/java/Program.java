@@ -4,10 +4,13 @@ import java.util.logging.ConsoleHandler;
  * Ersetzt GiraV2.java, da sonst statisch.
  */
 public class Program {
+
+    private final String configPath = "GiraV2_Config.json";
     public boolean accountIsAdmin = false;
     public Employee employeeAccount = null;
     public Admin adminAccount = null;
 
+    public File file;
     public Admin rootAdmin = new Admin("admin", "root");
     public Employee mainEmployee = new Employee("standardUser", "1234");
     public Ticket startupTicket = new Ticket("GiraV2", "Wilkommen bei GiraV2", "-", mainEmployee, mainEmployee);
@@ -15,15 +18,18 @@ public class Program {
 
     public Program() {
         try {
-            logger = new Logger(File.getFromConfig("GiraV2_Config.json", "logFilePath"));
+            file = new File(configPath);
         }
         catch (ConfigNotFoundException ex) {
             System.out.println("Die Config Datei wurde nicht gefunden. Bitte überprüfen Sie die Datei. Programm kann nicht starten.");
             return;
         }
-        logger.log("Program Started");
+
+        logger = new Logger(file.getFromConfig("logFilePath"));
+
+        logger.log("Program Started", "info");
         Run();
-        logger.log("Program Ended");
+        logger.log("Program Ended", "info");
     }
 
     /**
@@ -31,8 +37,6 @@ public class Program {
      */
     private void Run() {
         try {
-            GiraV2.proObj.logger.log("Programm gestartet.");
-
             Navigation nav = new Navigation();
             boolean endProgram = false;
 
@@ -95,16 +99,15 @@ public class Program {
                     }
                 }
             }
-            GiraV2.proObj.logger.log("Programm wurde beendet");
             System.out.println("Programm wurde beendet. Danke dass Sie Gira nutzen.");
         }
         catch(Exception ex)  {
             System.out.println("Es gab einen unbekannten Fehler. Program wird beendet.");
             try {
-                GiraV2.proObj.logger.log(ex.getMessage());
+                logger.log(ex.getMessage(), "Fatal");
             }
             catch (Exception e) {
-                System.out.println("Fehlermeldung Konnte nicht in die Log-Datei geschrieben werden. Ausgabe in der Konsole:\n" + e.getMessage());
+                System.out.println("Fehlermeldung konnte nicht in die Log-Datei geschrieben werden. Ausgabe in der Konsole:\n" + e.getMessage());
             }
         }
     }

@@ -14,13 +14,16 @@ public class File {
     private String userFilePath;
     private String configContent;
 
-    public File (String configPath) {
+    public File (String configPath) throws ConfigNotFoundException {
+        if (!Files.exists(Path.of(configPath))) {
+            throw new ConfigNotFoundException(configPath);
+        }
         try {
             configContent = String.valueOf(Files.readAllLines(Path.of(configPath), StandardCharsets.UTF_8));
-        } catch (ConfigNotFoundException e) {
-            e.printStackTrace();
         }
+        catch (IOException ex) {
 
+        }
     }
 
     public boolean writeTickets(List<Ticket> ticketList) {
@@ -31,12 +34,11 @@ public class File {
         return true;
     }
 
-    public static String getFromConfig(String configPath, String key) throws ConfigNotFoundException {
-        if (!Files.exists(Path.of(configPath))) {
-            throw new ConfigNotFoundException(configPath);
-        }
+    public String getFromConfig(String key)  {
         try {
-            return new JSONObject(Files.readString(Paths.get(configPath))).getString("logFilePath");
+            JSONArray arr = new JSONArray(configContent);
+            JSONObject obj = arr.getJSONObject(0);
+            return obj.getString(key);
         }
         catch (Exception ex) {
             return null;
