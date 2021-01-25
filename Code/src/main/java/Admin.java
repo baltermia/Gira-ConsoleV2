@@ -22,7 +22,7 @@ public class Admin {
         this.password = password;
 
         if (!username.equals("admin")) {
-            Gira.girObj.proObj.rootAdmin.adminList.add(this);
+            GiraV2.girObj.proObj.rootAdmin.adminList.add(this);
         } else {
             this.adminList.add(this);
         }
@@ -54,10 +54,10 @@ public class Admin {
      * @return
      */
     public boolean deleteEmployeeAccount(Employee acc) {
-        for (int i = 0; i < Gira.girObj.proObj.employeeAccount.employeeList.size(); i++) {
-            if (Gira.girObj.proObj.employeeAccount.employeeList.get(i).equals(acc))
+        for (int i = 0; i < GiraV2.girObj.proObj.employeeAccount.employeeList.size(); i++) {
+            if (GiraV2.girObj.proObj.employeeAccount.employeeList.get(i).equals(acc))
             {
-                Gira.girObj.proObj.employeeAccount.employeeList.remove(i);
+                GiraV2.girObj.proObj.employeeAccount.employeeList.remove(i);
                 return true;
             }
         }
@@ -70,10 +70,10 @@ public class Admin {
      * @return
      */
     public boolean deleteAdminAccount(Admin acc) {
-        for (int i = 0; i < Gira.girObj.proObj.employeeAccount.employeeList.size(); i++) {
-            if (Gira.girObj.proObj.adminAccount.adminList.get(i).equals(acc))
+        for (int i = 0; i < GiraV2.girObj.proObj.employeeAccount.employeeList.size(); i++) {
+            if (GiraV2.girObj.proObj.adminAccount.adminList.get(i).equals(acc))
             {
-                Gira.girObj.proObj.adminAccount.adminList.remove(i);
+                GiraV2.girObj.proObj.adminAccount.adminList.remove(i);
                 return true;
             }
         }
@@ -89,7 +89,7 @@ public class Admin {
         String username = (name.substring(0, 3) + name.split(" ")[1].substring(0, 3)).toLowerCase();
 
         while (true) {
-            if ((isAdmin == false ? Gira.girObj.proObj.mainEmployee.getEmployee(username) : getAdmin(username)) != null) {
+            if ((isAdmin == false ? GiraV2.girObj.proObj.mainEmployee.getEmployee(username) : getAdmin(username)) != null) {
                 if (username.length() > 6) {
                     int strLenth = username.length();
                     while (strLenth > 0 && Character.isDigit(username.charAt(strLenth - 1))) {

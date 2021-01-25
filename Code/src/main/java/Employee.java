@@ -19,7 +19,7 @@ public class Employee {
         this.username = username;
 
         if (!username.equals("standardUser")) {
-            Gira.girObj.proObj.mainEmployee.employeeList.add(this);
+            GiraV2.girObj.proObj.mainEmployee.employeeList.add(this);
         }
     }
 

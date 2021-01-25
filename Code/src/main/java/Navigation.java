@@ -5,7 +5,7 @@ import java.io.InputStreamReader;
 /**
  * In der Navigation Klasse wird der Hauptteil vom Input/Output getätigt.
  */
-public class navigation {
+public class Navigation {
     public BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
     /**
@@ -50,7 +50,7 @@ public class navigation {
         while (true) {
             String input = reader.readLine();
 
-            Employee account = Gira.girObj.proObj.mainEmployee.getEmployee(input);
+            Employee account = GiraV2.girObj.proObj.mainEmployee.getEmployee(input);
 
             if (account == null) {
                 System.out.println("Ihr Account wurde nicht gefunden. Probieren Sie es nochmals: ");
@@ -72,7 +72,7 @@ public class navigation {
         while (true) {
             String input = reader.readLine();
 
-            Admin account = Gira.girObj.proObj.rootAdmin.getAdmin(input);
+            Admin account = GiraV2.girObj.proObj.rootAdmin.getAdmin(input);
 
             if (account == null) {
                 System.out.println("Ihr Account wurde nicht gefunden. Probieren Sie es nochmals: ");
@@ -139,7 +139,7 @@ public class navigation {
 
             password = reader.readLine();
 
-            Admin account = Gira.girObj.proObj.rootAdmin.createAdminAccount(name, password);
+            Admin account = GiraV2.girObj.proObj.rootAdmin.createAdminAccount(name, password);
 
             System.out.println("Account wurde erfolgreich erstellt." +
                     "\nIhre Nutzername lautet: " + account.username +
@@ -147,7 +147,7 @@ public class navigation {
                     "\n-------------------------------");
         }
         else {
-            Employee account = Gira.girObj.proObj.rootAdmin.createEmployeeAccount(name);
+            Employee account = GiraV2.girObj.proObj.rootAdmin.createEmployeeAccount(name);
 
             System.out.println("Account wurde erfolgreich erstellt." +
                     "\nIhre Nutzername lautet: " + account.username +
@@ -169,27 +169,27 @@ public class navigation {
             String input = reader.readLine();
 
             if (isAdmin) {
-                Admin acc = Gira.girObj.proObj.rootAdmin.getAdmin(input);
+                Admin acc = GiraV2.girObj.proObj.rootAdmin.getAdmin(input);
                 if (acc == null) {
                     System.out.println("Der eingegebene Account wurde nicht gefunen. Bitte probieren Sie es nochmals:");
                     continue;
                 }
 
-                if (Gira.girObj.proObj.rootAdmin.deleteAdminAccount(acc)) {
+                if (GiraV2.girObj.proObj.rootAdmin.deleteAdminAccount(acc)) {
                     System.out.print("Der Account wurde erfolgreich gelöscht.");
                 } else {
                     System.out.println("Beim Löschen vom Account ist ein fehler aufgetreten. Abbruch.");
                 }
                 return;
             } else {
-                Employee acc = Gira.girObj.proObj.mainEmployee.getEmployee(input);
+                Employee acc = GiraV2.girObj.proObj.mainEmployee.getEmployee(input);
 
-                if (Gira.girObj.proObj.mainEmployee.getEmployee(input) == null) {
+                if (GiraV2.girObj.proObj.mainEmployee.getEmployee(input) == null) {
                     System.out.println("Der eingegebene Account wurde nicht gefunen. Bitte probieren Sie es nochmals:");
                     continue;
                 }
 
-                if (Gira.girObj.proObj.rootAdmin.deleteEmployeeAccount(acc)) {
+                if (GiraV2.girObj.proObj.rootAdmin.deleteEmployeeAccount(acc)) {
                     System.out.print("Der Account wurde erfolgreich gelöscht.");
                 } else {
                     System.out.println("Beim Löschen vom Account ist ein fehler aufgetreten. Abbruch.");
@@ -230,17 +230,17 @@ public class navigation {
         Employee editor;
         while (true) {
             String user = reader.readLine();
-            if (Gira.girObj.proObj.mainEmployee.getEmployee(user) == null) {
+            if (GiraV2.girObj.proObj.mainEmployee.getEmployee(user) == null) {
                 System.out.println("Es wurde kein Nutzer mit den Angaben gefunden. Bitte probieren Sie es nochals:");
                 continue;
             }
             else {
-                editor = Gira.girObj.proObj.mainEmployee.getEmployee(user);
+                editor = GiraV2.girObj.proObj.mainEmployee.getEmployee(user);
             }
-                break;
+            break;
         }
 
-        new Ticket(name, desc, priority, Gira.girObj.proObj.employeeAccount, editor);
+        new Ticket(name, desc, priority, GiraV2.girObj.proObj.employeeAccount, editor);
     }
 
     /**
@@ -252,11 +252,11 @@ public class navigation {
         Ticket tckt;
         while (true) {
             String id_name = reader.readLine();
-            if (Gira.girObj.proObj.startupTicket.getTicket(id_name) == null) {
+            if (GiraV2.girObj.proObj.startupTicket.getTicket(id_name) == null) {
                 System.out.println("Ticket wurde nicht gefunden. Bitte probieren Sie es nochmals:");
                 continue;
             } else {
-                tckt = Gira.girObj.proObj.startupTicket.getTicket(id_name);
+                tckt = GiraV2.girObj.proObj.startupTicket.getTicket(id_name);
                 break;
             }
         }
@@ -307,12 +307,12 @@ public class navigation {
                 Employee reporter;
                 while (true) {
                     String user = reader.readLine();
-                    if (Gira.girObj.proObj.mainEmployee.getEmployee(user) == null) {
+                    if (GiraV2.girObj.proObj.mainEmployee.getEmployee(user) == null) {
                         System.out.println("Es wurde kein Nutzer mit den Angaben gefunden. Bitte probieren Sie es nochals:");
                         continue;
                     }
                     else {
-                        reporter = Gira.girObj.proObj.mainEmployee.getEmployee(user);
+                        reporter = GiraV2.girObj.proObj.mainEmployee.getEmployee(user);
                     }
                     break;
                 }
@@ -323,12 +323,12 @@ public class navigation {
                 Employee editor;
                 while (true) {
                     String user = reader.readLine();
-                    if (Gira.girObj.proObj.mainEmployee.getEmployee(user) == null) {
+                    if (GiraV2.girObj.proObj.mainEmployee.getEmployee(user) == null) {
                         System.out.println("Es wurde kein Nutzer mit den Angaben gefunden. Bitte probieren Sie es nochals:");
                         continue;
                     }
                     else {
-                        editor = Gira.girObj.proObj.mainEmployee.getEmployee(user);
+                        editor = GiraV2.girObj.proObj.mainEmployee.getEmployee(user);
                     }
                     break;
                 }
