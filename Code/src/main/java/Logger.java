@@ -34,8 +34,7 @@ public class Logger {
     public String getFilePath() {
         try {
             if (!Files.exists(Path.of(filePath))) {
-                throw new Exception(
-                        "Incorrect filepath : " + filePath);
+                throw new ConfigNotFoundException(filePath);
             }
             return Files.readString(Paths.get("config.txt"));
         }
