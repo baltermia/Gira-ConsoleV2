@@ -11,9 +11,10 @@ public class Employee extends User{
      * Constructor
      * @param username
      */
-    public Employee(String username) {
+    public Employee(String username, String password) {
         id = employeeList.size();
         this.username = username;
+        this.password = password;
 
         if (!username.equals("standardUser")) {
             GiraV2.proObj.mainEmployee.employeeList.add(this);

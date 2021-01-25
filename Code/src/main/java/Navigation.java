@@ -104,6 +104,7 @@ public class Navigation {
 
         String name;
         String password;
+        User account;
 
         while (true) {
             name = reader.readLine();
@@ -134,26 +135,19 @@ public class Navigation {
             break;
         }
 
-        if (isAdmin) {
-            System.out.println("Bitte geben Sie ein Passwort ein: ");
+        System.out.println("Bitte geben Sie ein Passwort ein: ");
+        password = reader.readLine();
 
-            password = reader.readLine();
-
-            Admin account = GiraV2.proObj.rootAdmin.createAdminAccount(name, password);
-
-            System.out.println("Account wurde erfolgreich erstellt." +
-                    "\nIhre Nutzername lautet: " + account.username +
-                    "\nIhre Account-ID ist: " + account.id +
-                    "\n-------------------------------");
+        if(isAdmin) {
+            account = GiraV2.proObj.rootAdmin.createAdminAccount(name, password);
         }
         else {
-            Employee account = GiraV2.proObj.rootAdmin.createEmployeeAccount(name);
-
+            account = GiraV2.proObj.rootAdmin.createEmployeeAccount(name, password);
+        }
             System.out.println("Account wurde erfolgreich erstellt." +
                     "\nIhre Nutzername lautet: " + account.username +
                     "\nIhre Account-ID ist: " + account.id +
                     "\n-------------------------------");
-        }
     }
 
     /**

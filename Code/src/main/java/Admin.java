@@ -29,9 +29,9 @@ public class Admin extends User{
      * @param name
      * @return
      */
-    public Employee createEmployeeAccount(String name) {
+    public Employee createEmployeeAccount(String name, String password) {
 
-        return new Employee(getNewUsername(name, false));
+        return new Employee(getNewUsername(name, false), password);
     }
 
     /**

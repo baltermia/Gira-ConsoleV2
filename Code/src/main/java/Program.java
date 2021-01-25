@@ -7,7 +7,7 @@ public class Program {
     public Admin adminAccount = null;
 
     public Admin rootAdmin = new Admin("admin", "root");
-    public Employee mainEmployee = new Employee("standardUser");
+    public Employee mainEmployee = new Employee("standardUser", "1234");
     public Ticket startupTicket = new Ticket("GiraV2", "Wilkommen bei GiraV2", "-", mainEmployee, mainEmployee);
     public Logger logger = new Logger(new Logger("").getFilePath());
 
