@@ -17,8 +17,8 @@ public class File {
     public File (String configPath) {
         try {
             configContent = String.valueOf(Files.readAllLines(Path.of(configPath), StandardCharsets.UTF_8));
-        } catch (IOException e) {
-            //throw new ConfigNotFoundException();
+        } catch (ConfigNotFoundException e) {
+            e.printStackTrace();
         }
 
     }

@@ -282,7 +282,7 @@ public class Navigation {
      * @throws IOException
      */
     public void editTicket(Ticket tckt) throws IOException{
-        System.out.println("Was möchten Sie änder?");
+        System.out.println("Was möchten Sie ändern?");
         System.out.println("1. - Name\n2: - Beschreibung\n3: - Reporter\n4: - Bearbeiter\n5: - Priorität\n6: - Abbruch");
         int input = inputIndex(6);
         switch (input) {
@@ -302,7 +302,7 @@ public class Navigation {
                 while (true) {
                     String user = reader.readLine();
                     if (GiraV2.proObj.mainEmployee.get(user) == null) {
-                        System.out.println("Es wurde kein Nutzer mit den Angaben gefunden. Bitte probieren Sie es nochals:");
+                        System.out.println("Es wurde kein Nutzer mit den Angaben gefunden. Bitte probieren Sie es nochmals:");
                         continue;
                     }
                     else {
@@ -318,7 +318,7 @@ public class Navigation {
                 while (true) {
                     String user = reader.readLine();
                     if (GiraV2.proObj.mainEmployee.get(user) == null) {
-                        System.out.println("Es wurde kein Nutzer mit den Angaben gefunden. Bitte probieren Sie es nochals:");
+                        System.out.println("Es wurde kein Nutzer mit den Angaben gefunden. Bitte probieren Sie es nochmals:");
                         continue;
                     }
                     else {
