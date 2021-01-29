@@ -28,14 +28,12 @@ public class Program {
         logger = new Logger(file.getFromConfig("logFilePath"));
 
         logger.log("Program Started", "info");
-        Run();
-        logger.log("Program Ended", "info");
     }
 
     /**
      * Ersetzt die Main Methode von gira, da sonsts statisch
      */
-    private void Run() {
+    public void Run() {
         try {
             Navigation nav = new Navigation();
             boolean endProgram = false;
@@ -100,6 +98,7 @@ public class Program {
                 }
             }
             System.out.println("Programm wurde beendet. Danke dass Sie Gira nutzen.");
+            logger.log("Program Ended", "info");
         }
         catch(Exception ex)  {
             System.out.println("Es gab einen unbekannten Fehler. Program wird beendet.");

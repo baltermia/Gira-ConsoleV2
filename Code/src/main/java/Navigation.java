@@ -55,9 +55,19 @@ public class Navigation {
             if (account == null) {
                 System.out.println("Ihr Account wurde nicht gefunden. Probieren Sie es nochmals: ");
                 continue;
-            } else {
-                System.out.println("Ihr Account wurde gefunden. Sie sind nun angemeldet.");
-                return account;
+            }
+
+            System.out.println("Ihr Account wurde gefunden. Bitte geben Sie das Passwort ein:");
+            while (true) {
+                String password = reader.readLine();
+
+                if (account.password.equals(password)) {
+                    System.out.println("Das eingegebene Passwort ist korrekt. Sie sind nun angemeldet.");
+                    return account;
+                } else {
+                    System.out.println("Das eingegebene Passwort ist falsch. Versuchen Sie es nochmals:");
+                    continue;
+                }
             }
         }
     }

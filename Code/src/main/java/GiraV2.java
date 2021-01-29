@@ -3,5 +3,6 @@ public class GiraV2 {
 
     public static void main(String[] args) {
         proObj = new Program();
+        proObj.Run();
     }
 }

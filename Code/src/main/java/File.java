@@ -26,12 +26,26 @@ public class File {
         }
     }
 
-    public boolean writeTickets(List<Ticket> ticketList) {
-        return true;
+    public void writeTickets(List<Ticket> ticketList) {
+
     }
 
-    public boolean writeUsers(List<Employee> employeeList, List<Admin> adminList) {
-        return true;
+    public void writeUsers(List<Employee> employeeList, List<Admin> adminList) {
+
+    }
+
+    public List<Ticket> getTickets() {
+        String text = "";
+        String tmp = text.replaceAll("\\s+","");
+        return null;
+    }
+
+    public List<Employee> getEmployees() {
+        return null;
+    }
+
+    public List<Admin> getAdmins() {
+        return null;
     }
 
     public String getFromConfig(String key)  {
